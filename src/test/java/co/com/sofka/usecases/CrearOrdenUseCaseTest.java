@@ -4,7 +4,7 @@ import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.transporte.OrdenCreada;
+import co.com.sofka.domain.transporte.event.OrdenCreada;
 import co.com.sofka.domain.transporte.command.CrearOrden;
 import co.com.sofka.domain.transporte.event.TransporteCreado;
 import co.com.sofka.domain.transporte.valor.*;
@@ -16,9 +16,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-import java.util.logging.Handler;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class CrearOrdenUseCaseTest {
@@ -29,11 +26,12 @@ class CrearOrdenUseCaseTest {
     @Test
     void crearOrden(){
         //arrange
-        TransporteId transporteId = TransporteId.of("xxxx");
-        OrdenId ordenId = OrdenId.of("ffffff");
-        Remitente remitente = new Remitente("Raul", "Alzate", "xxxxxx");
-        Destinatario destinatario = new Destinatario("Pedro", "Sanchez", "fffff");
+        var transporteId = TransporteId.of("xxxx");
+        var ordenId = OrdenId.of("ffffff");
+        var remitente = new Remitente("Raul", "Alzate", "xxxxxx");
+        var destinatario = new Destinatario("Pedro", "Sanchez", "fffff");
         var command = new CrearOrden( transporteId,  ordenId,  remitente,  destinatario);
+
 
         var usecase = new CrearOrdenUseCase();
         Mockito.when(repository.getEventsBy("xxxx")).thenReturn(history());
@@ -64,6 +62,7 @@ class CrearOrdenUseCaseTest {
                 new OrdenCreada(OrdenId.of("6"), null, null),
                 new OrdenCreada(OrdenId.of("7"), null, null),
                 new OrdenCreada(OrdenId.of("8"), null, null),
+                new OrdenCreada(OrdenId.of("9"), null, null),
                 new OrdenCreada(OrdenId.of("10"), null, null)
         );
     }

@@ -43,4 +43,13 @@ public class Destinatario  implements ValueObject<Destinatario.Props> {
         String apellido();
         String identidad();
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", identidad='" + identidad + '\'' +
+                '}';
+    }
 }

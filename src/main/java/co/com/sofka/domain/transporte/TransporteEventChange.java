@@ -1,11 +1,14 @@
 package co.com.sofka.domain.transporte;
 
 import co.com.sofka.domain.generic.EventChange;
+import co.com.sofka.domain.transporte.event.DestinatorioCambiado;
+import co.com.sofka.domain.transporte.event.OrdenCreada;
 import co.com.sofka.domain.transporte.event.OrdenEntregada;
 import co.com.sofka.domain.transporte.event.TransporteCreado;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class TransporteEventChange extends EventChange {
     public TransporteEventChange(Transporte transporte) {
@@ -26,6 +29,13 @@ public class TransporteEventChange extends EventChange {
 
         apply((OrdenEntregada event) -> {
             transporte.ordenes.get(event.getOrdenId().value()).entregarOrden();
+        });
+
+        apply((DestinatorioCambiado event) -> {
+            if(Objects.isNull(transporte.ordenes.get(event.getOrdenId().value()))){
+                throw new IllegalArgumentException("La orden no existe");
+            }
+            transporte.ordenes.get(event.getOrdenId().value()).cambiarDestinatario(event.getDestinatario());
         });
     }
 }

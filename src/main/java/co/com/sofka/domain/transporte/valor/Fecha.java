@@ -2,21 +2,22 @@ package co.com.sofka.domain.transporte.valor;
 
 import co.com.sofka.domain.generic.ValueObject;
 
+import java.time.LocalDate;
 import java.util.Date;
 
-public class Fecha implements ValueObject<Date> {
-    private final Date value;
+public class Fecha implements ValueObject<LocalDate> {
+    private final LocalDate value;
 
-    public Fecha(Date value) {
+    public Fecha(LocalDate value) {
         this.value = value;//TODO: validar fechas, si se permite en el pasado, fechas en el futuro...
     }
 
     public Fecha() {
-       this(new Date());
+       this(LocalDate.now());
     }
 
     @Override
-    public Date value() {
+    public LocalDate value() {
         return value;
     }
 }

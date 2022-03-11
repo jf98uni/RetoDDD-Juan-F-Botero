@@ -1,4 +1,4 @@
-package co.com.sofka.domain.transporte;
+package co.com.sofka.domain.transporte.event;
 
 import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.transporte.valor.Destinatario;

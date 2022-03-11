@@ -11,4 +11,5 @@ public class OrdenId extends Identity {
     public static OrdenId of(String valor) {
         return new OrdenId(valor);
     }
+
 }

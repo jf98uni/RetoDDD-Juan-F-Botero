@@ -5,19 +5,19 @@ import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.domain.transporte.Transporte;
-import co.com.sofka.domain.transporte.command.CrearOrden;
+import co.com.sofka.domain.transporte.command.CambiarDestinatario;
 
-public class CrearOrdenUseCase extends UseCase<RequestCommand<CrearOrden>, ResponseEvents> {
-
+public class CambiarDestinatarioUseCase extends UseCase<RequestCommand<CambiarDestinatario>, ResponseEvents> {
     @Override
-    public void executeUseCase(RequestCommand<CrearOrden> input) {
+    public void executeUseCase(RequestCommand<CambiarDestinatario> input) {
         var command = input.getCommand();
-
         var transporte = Transporte.from(command.getTransporteId(), retrieveEvents());
-        if(transporte.ordenes().values().size() >= 10){//regla de negocio
-            throw new BusinessException(command.getTransporteId().value(), "No se puede agregar mas de 10 ordenes por transportador");
+        try {
+            transporte.cambiarDestinatorioParaLaOrden(command.getOrdenId(), command.getDestinatario());
+        } catch (IllegalArgumentException e){
+            throw new BusinessException(command.getTransporteId().value(), e.getMessage(), e);
         }
-        transporte.crearOrden(command.getOrdenId(), command.getRemitente(),command.getDestinatario());
+
         emit().onResponse(new ResponseEvents(transporte.getUncommittedChanges()));
     }
 }

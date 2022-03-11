@@ -2,6 +2,8 @@ package co.com.sofka.domain.transporte;
 
 import co.com.sofka.domain.generic.AggregateEvent;
 import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.transporte.event.DestinatorioCambiado;
+import co.com.sofka.domain.transporte.event.OrdenCreada;
 import co.com.sofka.domain.transporte.event.OrdenEntregada;
 import co.com.sofka.domain.transporte.event.TransporteCreado;
 import co.com.sofka.domain.transporte.valor.*;
@@ -42,7 +44,15 @@ public class Transporte extends AggregateEvent<TransporteId> {
     }
 
 
+    public void cambiarDestinatorioParaLaOrden(OrdenId ordenId, Destinatario destinatario){
+        appendChange(new DestinatorioCambiado(ordenId, destinatario)).apply();
+    }
+
     public Map<String, Orden> ordenes() {
         return ordenes;
+    }
+
+    public ConductorId conductorId() {
+        return conductorId;
     }
 }
