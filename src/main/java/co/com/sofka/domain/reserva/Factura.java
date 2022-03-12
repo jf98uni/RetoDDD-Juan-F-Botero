@@ -20,6 +20,10 @@ public class Factura extends Entity<FacturaID> {
         this.costo = costo;
     }
 
+    public Costo costo() {
+        return costo;
+    }
+
     public List<DomainEvent> getUncommittedChanges() {
         return Collections.emptyList();
     }

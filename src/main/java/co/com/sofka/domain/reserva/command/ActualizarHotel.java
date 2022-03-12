@@ -15,9 +15,7 @@ public class ActualizarHotel extends Command {
         this.hotelID = hotelID;
     }
 
-    public HotelID getCosto() {
+    public HotelID getHotelID() {
         return hotelID;
     }
-
-
 }
