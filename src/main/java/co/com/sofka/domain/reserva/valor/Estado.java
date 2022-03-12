@@ -12,7 +12,7 @@ public class Estado implements ValueObject<Estado.Fase> {
 
     @Override
     public Fase value() {
-        return null;
+        return value;
     }
 
     public enum Fase {

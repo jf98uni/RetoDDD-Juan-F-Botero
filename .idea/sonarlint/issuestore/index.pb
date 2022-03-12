@@ -1,10 +1,6 @@
 
-o
-?src/main/java/co/com/sofka/usecases/CrearTransporteUseCase.java,a/a/aafe6c87d406a1108438d7390501272b7565ed34
 j
 :src/main/java/co/com/sofka/usecases/CrearOrdenUseCase.java,7/8/788400b3ddab79691011bdc4246420925ea381c3
-c
-3src/main/java/co/com/sofka/infra/AWSSMSSErvice.java,d\4\d4d905c54c0efbd647212d446b59642a2071b7e6
 :
 
 ventas.iml,6\b\6bcaeabef4dd20850ecf2e8a44cc4cea5e4b5487
@@ -40,5 +36,3 @@ k
 ;src/main/java/co/com/sofka/domain/hotel/valor/Personal.java,a\3\a3c085ba2a75adfa35f925f238d6ff09ba60f452
 j
 :src/main/java/co/com/sofka/domain/reserva/valor/Costo.java,0\6\0655bd056f8afb334564d85f27082f5c9de37446
-n
->src/main/java/co/com/sofka/domain/reserva/valor/ReservaID.java,c\d\cdb5b88877093418ffae1e73bc2af63fe49c6b7e
