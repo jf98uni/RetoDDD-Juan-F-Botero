@@ -4,9 +4,6 @@ import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.ResponseEvents;
 import co.com.sofka.business.support.TriggeredEvent;
-import co.com.sofka.domain.transporte.Transporte;
-import co.com.sofka.domain.transporte.event.DestinatorioCambiado;
-import co.com.sofka.domain.transporte.valor.TransporteId;
 
 import java.util.List;
 
@@ -17,7 +14,7 @@ public class NotificarCambioDeDestinatorioUseCase extends UseCase<TriggeredEvent
         var service = getService(SMSService.class).orElseThrow();
 
         var events = repository().getEventsBy("transporte", event.aggregateRootId());
-        var transporte = Transporte.from(TransporteId.of(event.aggregateRootId()), events);
+        var transporte = Reserva.from(TransporteId.of(event.aggregateRootId()), events);
         var esOK = service.enviarMensajeAConductor(
                 transporte.conductorId(),
                 String.format("Se cambio la dirección de la orden %s, con el siguiente destino %s", event.getOrdenId(), event.getDestinatario())

@@ -4,16 +4,8 @@ import co.com.sofka.business.generic.BusinessException;
 import co.com.sofka.business.generic.ServiceBuilder;
 import co.com.sofka.business.generic.UseCaseHandler;
 import co.com.sofka.business.repository.DomainEventRepository;
-import co.com.sofka.business.support.RequestCommand;
 import co.com.sofka.business.support.TriggeredEvent;
 import co.com.sofka.domain.generic.DomainEvent;
-import co.com.sofka.domain.transporte.event.DestinatorioCambiado;
-import co.com.sofka.domain.transporte.event.OrdenCreada;
-import co.com.sofka.domain.transporte.event.OrdenEntregada;
-import co.com.sofka.domain.transporte.event.TransporteCreado;
-import co.com.sofka.domain.transporte.valor.ConductorId;
-import co.com.sofka.domain.transporte.valor.Destinatario;
-import co.com.sofka.domain.transporte.valor.OrdenId;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,8 +14,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 class NotificarCambioDeDestinatorioUseCaseTest {
