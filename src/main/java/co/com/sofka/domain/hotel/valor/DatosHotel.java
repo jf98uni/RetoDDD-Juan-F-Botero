@@ -2,14 +2,16 @@ package co.com.sofka.domain.hotel.valor;
 
 import co.com.sofka.domain.generic.ValueObject;
 
+import java.util.Objects;
+
 public class DatosHotel implements ValueObject<DatosHotel.Props> {
 
     private final String nombre;
     private final String locacion;
 
     public DatosHotel(String nombre, String locacion) {
-        this.nombre = nombre;
-        this.locacion = locacion;
+        this.nombre = Objects.requireNonNull(nombre);
+        this.locacion = Objects.requireNonNull(locacion);
     }
 
 

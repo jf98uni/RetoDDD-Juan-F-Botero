@@ -1,4 +1,4 @@
-package co.com.sofka.usecases;
+package co.com.sofka.domain.reserva.usecases;
 
 import co.com.sofka.business.generic.UseCase;
 import co.com.sofka.business.support.RequestCommand;
