@@ -7,7 +7,7 @@ public class CostoEditadoAuto extends DomainEvent {
     private final Costo costo;
 
     public CostoEditadoAuto(Costo costo) {
-        super("reserva.editarcosto");
+        super("reserva.editarcostoauto");
         this.costo = costo;
 
     }

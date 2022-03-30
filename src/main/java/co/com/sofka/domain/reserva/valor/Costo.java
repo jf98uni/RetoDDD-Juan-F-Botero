@@ -19,8 +19,4 @@ public class Costo  implements ValueObject<Double> {
         return costo;
     }
 
-    public List<DomainEvent> getUncommittedChanges() {
-
-        return Collections.emptyList();
-    }
 }

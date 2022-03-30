@@ -1,28 +1,34 @@
 package co.com.sofka.domain.hotel.command;
 
 import co.com.sofka.domain.generic.Command;
+import co.com.sofka.domain.hotel.Hotel;
+import co.com.sofka.domain.hotel.valor.CuartoID;
+import co.com.sofka.domain.hotel.valor.HotelID;
+import co.com.sofka.domain.hotel.valor.Personal;
 
 public class EditarPersonal extends Command {
 
-    private final String nombre;
-    private final String apellido;
-    private final String cargo;
+    private final HotelID hotelID;
+    private final CuartoID cuartoID;
+    private final Personal personal;
 
-    public EditarPersonal(String nombre, String apellido, String cargo) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.cargo = cargo;
+
+    public EditarPersonal(HotelID hotelID, CuartoID cuartoID,Personal personal) {
+
+        this.hotelID = hotelID;
+        this.cuartoID = cuartoID;
+        this.personal = personal;
     }
 
-    public String getNombre() {
-        return nombre;
+    public CuartoID getCuartoID() {
+        return cuartoID;
     }
 
-    public String getApellido() {
-        return apellido;
+    public Personal getPersonal() {
+        return personal;
     }
 
-    public String getCargo() {
-        return cargo;
+    public HotelID getHotelID() {
+        return hotelID;
     }
 }

@@ -2,7 +2,6 @@ package co.com.sofka.domain.hotel;
 
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.domain.hotel.event.*;
-import co.com.sofka.domain.reserva.event.ReservaCreada;
 
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class HotelEventChange extends EventChange {
         );
 
         apply((PersonalEditado event) ->{
-                    hotel.editarPersonal(event.getNombre(),event.getApellido(),event.getCargo());
+                    hotel.editarPersonal(event.getHotelID(), event.getCuartoID(),event.getPersonal());
                 }
         );
 

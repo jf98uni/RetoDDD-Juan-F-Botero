@@ -40,9 +40,6 @@ public class Personal implements ValueObject<Personal.Props> {
         };
     }
 
-    public List<DomainEvent> getUncommittedChanges() {
-        return Collections.emptyList();
-    }
 
     public interface Props{
         String nombre();

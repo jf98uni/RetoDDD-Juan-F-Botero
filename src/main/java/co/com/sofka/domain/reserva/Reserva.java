@@ -1,8 +1,12 @@
 package co.com.sofka.domain.reserva;
 
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 import co.com.sofka.domain.reserva.event.*;
 import co.com.sofka.domain.reserva.valor.*;
+
+import java.time.temporal.ValueRange;
+import java.util.List;
 
 
 public class Reserva extends AggregateEvent<ReservaID> {
@@ -14,10 +18,21 @@ public class Reserva extends AggregateEvent<ReservaID> {
     protected Estado estado;
 
 
-    public Reserva(ReservaID reservaID, ClienteID clienteID, HotelID hotelID,Estado estado) {
+    public Reserva(ReservaID reservaID, ClienteID clienteID, HotelID hotelID, Estado estado) {
         super(reservaID);
-        appendChange(new ReservaCreada(clienteID,hotelID,estado)).apply();
+        appendChange(new ReservaCreada(clienteID,hotelID, estado)).apply();
         subscribe(new ReservaEventChange(this));
+    }
+
+    public Reserva(ReservaID reservaID){
+        super(reservaID);
+        subscribe(new ReservaEventChange(this));
+    }
+
+    public static Reserva from(ReservaID reservaID, List<DomainEvent> events){
+        var reserva = new Reserva(reservaID);
+        events.forEach(reserva::applyEvent);
+        return reserva;
     }
 
 
@@ -25,12 +40,12 @@ public class Reserva extends AggregateEvent<ReservaID> {
         appendChange(new FacturaCreada(facturaID,costo)).apply();
     }
 
-    public void editarCostoAuto(Costo costo){
-        appendChange(new CostoEditadoAuto(costo)).apply();
+    public void editarCostoAuto(Costo costo1){
+        appendChange(new CostoEditadoAuto(costo1)).apply();
     }
 
-    public void editarCostoFactura(Costo costo){
-        appendChange(new CostoEditadoFactura(costo)).apply();
+    public void editarCostoFactura(FacturaID facturaID ,Costo costo){
+        appendChange(new CostoEditadoFactura(facturaID ,costo)).apply();
     }
 
     public void cambiarAuto(Auto auto){

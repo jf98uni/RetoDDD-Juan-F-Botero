@@ -6,24 +6,25 @@ import co.com.sofka.domain.reserva.valor.FacturaID;
 import co.com.sofka.domain.reserva.valor.ReservaID;
 
 public class CrearFactura extends Command {
-    private final ReservaID reservaID;
-    private  final FacturaID facturaID;
-    private  final Costo costo;
-    public CrearFactura(ReservaID reservaID, ReservaID reservaID1, FacturaID facturaID, Costo costo) {
-        this.reservaID = reservaID1;
-        this.facturaID = facturaID;
-        this.costo = costo;
+    private  final ReservaID reservaID1;
+    private  final FacturaID facturaID1;
+    private  final Costo costo1;
+
+    public CrearFactura(ReservaID reservaID, FacturaID facturaID, Costo costo) {
+        this.reservaID1 = reservaID;
+        this.facturaID1 = facturaID;
+        this.costo1 = costo;
     }
 
     public FacturaID getFacturaID() {
-        return facturaID;
+        return facturaID1;
     }
 
     public Costo getCosto() {
-        return costo;
+        return costo1;
     }
 
     public ReservaID getReservaID() {
-        return reservaID;
+        return reservaID1;
     }
 }

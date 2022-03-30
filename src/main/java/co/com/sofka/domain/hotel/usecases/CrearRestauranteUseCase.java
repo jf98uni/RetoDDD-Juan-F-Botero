@@ -13,7 +13,9 @@ public class CrearRestauranteUseCase extends UseCase<RequestCommand<CrearRestaur
     @Override
     public void executeUseCase(RequestCommand<CrearRestaurante> crearRestauranteRequestCommand) {
         var command = crearRestauranteRequestCommand.getCommand();
-        var restaurante = new Restaurante(command.getRestauranteID(),command.getLocation());
-        emit().onResponse(new ResponseEvents(restaurante.getUncommittedChanges()));
+
+        var hotel = new Hotel(command.getHotelID());
+        hotel.crearRestaurante(command.getRestauranteID(),command.getLocation());
+        emit().onResponse(new ResponseEvents(hotel.getUncommittedChanges()));
     }
 }

@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Factura extends Entity<FacturaID> {
+
     private Costo costo;
 
     public Factura(FacturaID facturaID,Costo costo) {
@@ -16,7 +17,8 @@ public class Factura extends Entity<FacturaID> {
         this.costo = costo;
     }
 
-    public void editarCosto(Costo costo){
+
+    public void editarCostoFactura(FacturaID facturaID, Costo costo){
         this.costo = costo;
     }
 
@@ -24,7 +26,4 @@ public class Factura extends Entity<FacturaID> {
         return costo;
     }
 
-    public List<DomainEvent> getUncommittedChanges() {
-        return Collections.emptyList();
-    }
 }

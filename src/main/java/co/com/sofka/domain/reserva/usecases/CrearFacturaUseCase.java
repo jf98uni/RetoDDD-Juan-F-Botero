@@ -11,9 +11,13 @@ import co.com.sofka.domain.reserva.command.CrearReserva;
 public class CrearFacturaUseCase extends UseCase<RequestCommand<CrearFactura>, ResponseEvents> {
 
     @Override
-    public void executeUseCase(RequestCommand<CrearFactura> crearFacturaRequestCommand) {
-        var command = crearFacturaRequestCommand.getCommand();
-        var factura = new Factura(command.getFacturaID(),command.getCosto());
-        emit().onResponse(new ResponseEvents(factura.getUncommittedChanges()));
+    public void executeUseCase(RequestCommand<CrearFactura> input) {
+        var command =  input.getCommand();
+
+        var reserva = new Reserva(command.getReservaID());
+
+        reserva.crearFactura(command.getFacturaID(), command.getCosto());
+
+        emit().onResponse(new ResponseEvents(reserva.getUncommittedChanges()));
     }
 }

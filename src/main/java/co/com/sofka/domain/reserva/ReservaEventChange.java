@@ -2,6 +2,8 @@ package co.com.sofka.domain.reserva;
 
 import co.com.sofka.domain.generic.EventChange;
 import co.com.sofka.domain.reserva.event.*;
+import co.com.sofka.domain.reserva.valor.Costo;
+import co.com.sofka.domain.reserva.valor.FacturaID;
 
 public class ReservaEventChange extends EventChange {
     public ReservaEventChange(Reserva reserva) {
@@ -9,7 +11,9 @@ public class ReservaEventChange extends EventChange {
         apply((ReservaCreada event) ->{
             reserva.clienteID = event.getClienteID();
             reserva.hotelID = event.getHotelID();
+
             reserva.estado = event.getEstado();
+
         }
         );
 
@@ -20,14 +24,14 @@ public class ReservaEventChange extends EventChange {
 
         });
         apply((CostoEditadoFactura event) ->{
-            reserva.factura.editarCosto(event.getCosto());
+            reserva.factura.editarCostoFactura(event.getFacturaID(),event.getCosto());
 
 
         });
 
         apply((CostoEditadoAuto event) ->{
 
-            reserva.transporte.editarCosto(event.getCosto());
+            reserva.editarCostoAuto(event.getCosto());
 
         });
 
@@ -42,7 +46,7 @@ public class ReservaEventChange extends EventChange {
         });
 
         apply((TransporteCreado event) ->{
-            reserva.crearTransporte(event.getTransporteID(),event.getCosto(), event.getAuto());
+            reserva.transporte =  new Transporte(event.getTransporteID(),event.getCosto(), event.getAuto());
 
         });
         apply((ClienteActualizado event) ->{

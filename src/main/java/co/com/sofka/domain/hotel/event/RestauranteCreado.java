@@ -13,7 +13,7 @@ public class RestauranteCreado extends DomainEvent {
     private final Location location;
 
     public RestauranteCreado(RestauranteID restauranteID, Location location) {
-        super("hotel.crearRestaurante");
+        super("hotel.crearrestaurante");
         this.location = location;
         this.restauranteID = restauranteID;
     }

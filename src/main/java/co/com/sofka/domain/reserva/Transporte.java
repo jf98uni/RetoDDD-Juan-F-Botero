@@ -40,7 +40,5 @@ public class Transporte extends Entity<TransporteID> {
         return auto;
     }
 
-    public List<DomainEvent> getUncommittedChanges() {
-        return Collections.emptyList();
-    }
+
 }

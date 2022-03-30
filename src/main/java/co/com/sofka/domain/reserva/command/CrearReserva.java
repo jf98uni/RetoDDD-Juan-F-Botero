@@ -1,10 +1,7 @@
 package co.com.sofka.domain.reserva.command;
 
 import co.com.sofka.domain.generic.Command;
-import co.com.sofka.domain.reserva.valor.ClienteID;
-import co.com.sofka.domain.reserva.valor.Estado;
-import co.com.sofka.domain.reserva.valor.HotelID;
-import co.com.sofka.domain.reserva.valor.ReservaID;
+import co.com.sofka.domain.reserva.valor.*;
 
 public class CrearReserva extends Command {
 
@@ -14,7 +11,7 @@ public class CrearReserva extends Command {
     private final HotelID hotelID;
     private final Estado estado;
 
-    public CrearReserva(ReservaID reservaID, ClienteID clienteID, HotelID hotelID,Estado estado) {
+    public CrearReserva(ReservaID reservaID, ClienteID clienteID, HotelID hotelID, Estado estado) {
         this.reservaID = reservaID;
         this.clienteID = clienteID;
         this.hotelID = hotelID;
@@ -36,4 +33,5 @@ public class CrearReserva extends Command {
     public Estado getEstado() {
         return estado;
     }
+
 }

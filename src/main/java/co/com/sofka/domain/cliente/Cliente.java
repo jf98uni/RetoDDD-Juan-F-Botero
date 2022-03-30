@@ -4,8 +4,14 @@ import co.com.sofka.domain.cliente.event.*;
 import co.com.sofka.domain.cliente.valor.DatosCliente;
 import co.com.sofka.domain.cliente.valor.Tarjeta;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
+import co.com.sofka.domain.hotel.Hotel;
+import co.com.sofka.domain.hotel.HotelEventChange;
+import co.com.sofka.domain.hotel.valor.HotelID;
 import co.com.sofka.domain.reserva.valor.ClienteID;
 import co.com.sofka.domain.reserva.valor.Estado;
+
+import java.util.List;
 
 
 public class Cliente extends AggregateEvent<ClienteID> {
@@ -18,6 +24,18 @@ public class Cliente extends AggregateEvent<ClienteID> {
         super(clienteID);
         appendChange(new ClienteCreado(clienteID,datosCliente)).apply();
         subscribe(new ClienteEventChange(this));
+    }
+    public Cliente(ClienteID clienteID){
+        super(clienteID);
+        subscribe(new ClienteEventChange(this));
+    }
+
+    public static Cliente from(ClienteID clienteID, List<DomainEvent> events){
+
+        var cliente = new Cliente(clienteID);
+        events.forEach(cliente::applyEvent);
+        return cliente;
+
     }
 
     public void editarDatos(String nombre, String apellido){

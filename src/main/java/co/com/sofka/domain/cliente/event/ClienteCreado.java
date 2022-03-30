@@ -13,7 +13,7 @@ public class ClienteCreado extends DomainEvent {
     private final DatosCliente datosCliente;
 
     public ClienteCreado(ClienteID clienteID, DatosCliente datosCliente) {
-        super("cliente.crearCliente");
+        super("cliente.crearcliente");
         this.clienteID = clienteID;
         this.datosCliente= datosCliente;
 

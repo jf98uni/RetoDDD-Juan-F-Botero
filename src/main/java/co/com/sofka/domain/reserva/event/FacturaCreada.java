@@ -10,7 +10,7 @@ public class FacturaCreada extends DomainEvent {
     private final Costo costo;
 
     public FacturaCreada(FacturaID facturaID, Costo costo) {
-        super("reserva.reservacreada");
+        super("reserva.crearfactura");
         this.costo = costo;
         this.facturaID = facturaID;
     }
